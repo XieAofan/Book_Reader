@@ -1,4 +1,13 @@
 body{
-    background-color: rgb(24, 24, 24);
+    background-color: #28232F;
     color: white;
 }
+
+a:link {color: white;}
+a:visited {color: white;}
+a:hover {color: white;}
+a:active {color: white;}
+a.nav-link:link {color: white;}
+a.nav-link:visited {color: white;}
+a.nav-link:hover {color: white;}
+a.nav-link:active {color: white;}
