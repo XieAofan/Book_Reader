@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
+    'web.apps.WebConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,7 +78,7 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'iReader',
+        'NAME': 'ireader',
         'USER':'iReader',      #数据库用户名
         'PASSWORD':'iReader!',      #数据库密码
         'HOST':'sh-cdb-naz1f4ck.sql.tencentcdb.com',          #数据库主机，留空默认为"localhost"
