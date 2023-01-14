@@ -9,7 +9,7 @@ function creat_book_div(name,url,img,content,isnew,id){
         `;
     };
     url = `
-    /reader?url=${url}&id=${content}&n=${name}
+    /reader?url=${url}&n=${name}&id=${content}
     `
     var node = `
     <div class="col-*-* book">

@@ -24,9 +24,10 @@ html {
     overflow-y:auto;
     margin-top: 0.5%;
     width: 60%;
-    height: 85vh;
+    height: 90vh;
     padding: 40px;
     padding-top: 1%;
+    margin-bottom: 1%;
     background: rgba(0,0,0,.5);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -72,4 +73,22 @@ html {
   @keyframes move{
     0%{opacity: 0;}
     100%{opacity: 1;}
+  }
+
+  .content{
+    line-height: 1.8;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: custom-system;
+
+  }
+
+  .buttons{
+    position:fixed;
+    top: 7%;
+    right: 80%;
+  }
+  .buttons button{
+    width: 85px;
+    margin-top: 6px;
   }
