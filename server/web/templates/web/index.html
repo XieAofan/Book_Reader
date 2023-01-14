@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+        crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'web/night.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      no_cover_url = "{% static 'web/failed.jpg' %}";
+    </script>
+  </head>
+  <body>
+    <nav class="navbar container-fluid fixed-top navbar-expand" style="padding-top: 10px;color: white;background-color:#28232F;">
+        <a class="navbar-brand " data-bs-toggle="offcanvas" href="#offcanvasExample">
+            Menu
+          </a>
+        <a class="navbar-brand" href="#">
+            iReader
+        </a>
+        <div class="input-group" style="width:25%;position:absolute;right: 3%;height:30%;top:20%">
+          <span class="input-group-text" id="basic-addon1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+            </svg>
+          </span>
+          <input type="text" class="form-control" onkeydown="onKeyDown(event)" placeholder="Input group example" aria-label="Input group example" aria-describedby="basic-addon1">
+        </div>
+        <span style="position:absolute;right: 1%;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>
+        </span>
+      
+        
+    </nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style='background-color:#28232F'>
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            <ul class = 'menu list-group'>
+                <li class="list-group-item">Home</li>
+                <li class="list-group-item">Setting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="container text-left">
+      <h3 style="margin-top: 90px;color: white;">
+        最近在看
+    </h3>
+    <div class="row" id='booklast'>
+      <div class="col-*-* book" id='loading-last'>
+        <div class = 'loading'>
+            <div class="spinner-grow text-muted spinner-grow-sm"></div>
+            <div class="spinner-grow text-muted spinner-grow-sm"></div>
+            <div class="spinner-grow text-muted spinner-grow-sm"></div>
+        </div>
+      </div>
+    </div>
+
+        <h3 style="margin-top: 90px;color: white;">
+            库
+        </h3>
+
+        <div class="row" id='booksheft'>
+            <div class="col-*-* book" id='loading'>
+                <div class = 'loading'>
+                    <div class="spinner-grow text-muted spinner-grow-sm"></div>
+                    <div class="spinner-grow text-muted spinner-grow-sm"></div>
+                    <div class="spinner-grow text-muted spinner-grow-sm"></div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="row" id='booksheft'>
+          <hr>
+          <p class='text-center'>END</p>
+        </div>
+    </div>
+    <script src="{% static 'web/index.js' %}"></script>
+  </body>
+  </html>
