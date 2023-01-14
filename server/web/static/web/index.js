@@ -1,4 +1,4 @@
-function creat_book_div(name,url,img,isnew,id){
+function creat_book_div(name,url,img,content,isnew,id){
     if(img==undefined){
         img = no_cover_url
     };
@@ -8,7 +8,9 @@ function creat_book_div(name,url,img,isnew,id){
         <img class = 'new' id="book${id}" src="static/web/icon/new.svg">
         `;
     };
-    
+    url = `
+    /reader?url=${url}&id=${content}&n=${name}
+    `
     var node = `
     <div class="col-*-* book">
                 <a href="${url}">
@@ -48,7 +50,7 @@ function init(){
             var r = data[i];
             
             if(r['durChapterTime']>=r['latestChapterTime']){isnew=false};
-            $("#booklast").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],isnew,i));
+            $("#booklast").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],r['durChapterIndex'],isnew,i));
         }
 
         for (var i=0,len=data.length; i<len; i++)
@@ -56,7 +58,7 @@ function init(){
             var isnew = true;
             var r = data[i];
             if(r['durChapterTime']>=r['latestChapterTime']){isnew=false};
-            $("#booksheft").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],isnew,i));
+            $("#booksheft").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],r['durChapterIndex'],isnew,i));
         }
       });
 }

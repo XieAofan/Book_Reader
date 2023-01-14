@@ -7,17 +7,23 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
         crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'web/night.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'web/night-reader.css' %}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
     </script>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
-      no_cover_url = "{% static 'web/failed.jpg' %}";
+      url = "{{ url }}";
+      chapter = {{ content }};
     </script>
   </head>
   <body>
-    
+    <h3 class="th">{{ name }}</h3>
+    <div class="box test-1" id="f">
+        <h3 id="w">Welcome to Secret Space! </h3>
+        <hr>
+        
+    </div>
   </body>
 </html>
