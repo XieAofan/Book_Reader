@@ -1,4 +1,4 @@
-function creat_book_div(name,url,img,content,isnew,id){
+function creat_book_div(name,url,img,content,isnew,id,r){
     if(img==undefined){
         img = no_cover_url
     };
@@ -9,7 +9,7 @@ function creat_book_div(name,url,img,content,isnew,id){
         `;
     };
     url = `
-    /reader?url=${url}&n=${name}&id=${content}
+    /reader?url=${url}&n=${name}&myid=${content}
     `
     var node = `
     <div class="col-*-* book">
@@ -18,6 +18,10 @@ function creat_book_div(name,url,img,content,isnew,id){
                     ${nl}
                     <span>
                         <h5 class='text-center'>${name}</h5>
+                        <p class='text-left' >
+                        读到: ${r['durChapterTitle']}<br>
+                        最新: ${r['latestChapterTitle']}
+                        </p>
                     </span>
                 </a>
             </div>
@@ -50,7 +54,7 @@ function init(){
             var r = data[i];
             
             if(r['durChapterTime']>=r['latestChapterTime']){isnew=false};
-            $("#booklast").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],r['durChapterIndex'],isnew,i));
+            $("#booklast").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],r['durChapterIndex'],isnew,i,r));
         }
 
         for (var i=0,len=data.length; i<len; i++)
@@ -58,7 +62,7 @@ function init(){
             var isnew = true;
             var r = data[i];
             if(r['durChapterTime']>=r['latestChapterTime']){isnew=false};
-            $("#booksheft").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],r['durChapterIndex'],isnew,i));
+            $("#booksheft").append(creat_book_div(r['name'],r['bookUrl'],r['coverUrl'],r['durChapterIndex'],isnew,i,r));
         }
       });
 }

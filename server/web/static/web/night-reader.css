@@ -82,6 +82,9 @@ html {
     font-family: custom-system;
 
   }
+  .content p{
+    text-indent: 2em;
+  }
 
   .buttons{
     position:fixed;

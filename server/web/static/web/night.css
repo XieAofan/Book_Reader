@@ -33,8 +33,9 @@ a.nav-link:active {color: white;}
     bottom: 0px;
     background-color: rgb(44, 44, 44);
     opacity:0.8;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 10px;
+    padding-right: 0px;
+    transition:all 0.8s ease;
 }
 .book img{
     height:100%;width:100%;
@@ -43,6 +44,28 @@ a.nav-link:active {color: white;}
 	position:absolute;	
 	opacity:1;			
 }
+.book h5{
+    margin: 1px;
+}
+.book p{
+    display:none;
+    opacity:0;
+    transition:all 0.8s ease;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size: 10px;
+}
+.book:hover span{
+    transition:all 0.8s ease;
+    transform:scale(1,1);
+}
+.book:hover p{
+    display:block;
+    opacity:1;
+    transition:all 0.8s ease;
+}
+
 .book:hover img{
 	transform:scale(1.2,1.2);
 	transition:all 0.8s ease;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>iReader-{{ name }}</title>
     <meta charset="utf-8"> 
     <meta charset="utf-8"> 
     <link href="https://cdn.staticfile.org/bootstrap/5.2.3/css/bootstrap.min.css" 
@@ -15,7 +16,7 @@
     <script>
       url = "{{ url }}";
       index = {{ content }};
-      bookname = {{ name }};
+      bookname = '{{ name }}';
     </script>
   </head>
   <body onbeforeunload="test()">
@@ -38,6 +39,7 @@
         <span class="spinner-grow spinner-grow-sm" id="lastl"></span>
         Last
       </button><br>
+      <button class="btn btn-primary" onclick="location.href=('/')" >首页</button>
     </div>
     <script src="{% static 'web/reader.js' %}"></script>
 
