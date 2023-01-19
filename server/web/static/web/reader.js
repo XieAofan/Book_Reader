@@ -1,8 +1,11 @@
 data = '';
 x = document.getElementById("f");
 content = [];
+nr = '';
 function get_content(url,index){
-    $.get("https://read.xieaofan.top/reader3/getBookContent",{'url':url,'index':index},function(redata,status){
+    r = nr;
+    if(r==''){
+        $.get("https://read.xieaofan.top/reader3/getBookContent",{'url':url,'index':index},function(redata,status){
         data = redata['data'];
         data = data.split('\n');
         $('.content').empty();
@@ -13,7 +16,21 @@ function get_content(url,index){
                 $('#content').append(n);};
             }
       });
+    }
+    
+    $.get("https://read.xieaofan.top/reader3/getBookContent",{'url':url,'index':index+1},function(redata,status){
+        data = redata['data'];
+        nr = data;
+      });
       window.history.pushState({}, 0, window.location.href.split('&myid=')[0] + '&myid=' + index);
+      data = r.split('\n');
+        $('.content').empty();
+        for(var i=0,len=data.length; i<len; i++){
+            data[i] = data[i].replace(/^\s+|\s+$/g,'');
+            if(data[i]!=''){
+                var n = '<p>'+data[i]+'</p>';
+                $('#content').append(n);};
+            }
     
 };
 
