@@ -16,15 +16,23 @@ html {
     margin-left: 22%;
     margin-bottom: 0px;
     color: white;
+    font-size: small;
+  }
+  article{
+    columns: calc(100vw - 120px) 1;
+    column-gap: 60px;
+    height: 93vh;
+    transition: .4s;
   }
   .box{
     color: white;
     margin-left: 5%;
     margin: 20%;
-    overflow-y:auto;
+    /* overflow-y:auto; */
+    /* overflow-x: auto; */
     margin-top: 0.5%;
     width: 60%;
-    height: 90vh;
+    height: 94vh;
     padding: 40px;
     padding-top: 1%;
     margin-bottom: 1%;
@@ -32,7 +40,6 @@ html {
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
-    
     }
     .fy{
       width: 100%;
@@ -80,8 +87,10 @@ html {
     font-size: 18px;
     font-weight: 400;
     font-family: custom-system;
-
+    overflow: hidden;
   }
+
+.content {}
   .content p{
     text-indent: 2em;
   }
