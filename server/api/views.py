@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 import json
+import spider
 
 data = {
         'isSuccess': True,
@@ -36,6 +37,9 @@ def getBookContent(request):
     bookid = request.GET.get('book_id')
     index = request.GET.get('index')
     content = Content.objects.filter(book_id=bookid,index=index)
+    content = list(content)
+    if len(content) == 0:
+        spider.get_content
     data = {
         'isSuccess': True,
         'errorMsg':'',

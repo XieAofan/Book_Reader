@@ -23,8 +23,8 @@ class Book(models.Model):
     latestChaptertitle = models.CharField(max_length=200, default='')
     latestChaptertindex = models.DecimalField( max_digits=5, decimal_places=0, default=1)
     latestChapterTime = models.DecimalField(max_digits=14, decimal_places=0, default=0)
-    source =  models.JSONField()
-    current_source = models.JSONField()
+    source =  models.ForeignKey(Site,  related_name="book", null=True,blank=True,default=None, on_delete=models.CASCADE)
+    #current_source = models.JSONField()
 
 class Content(models.Model):
     def __str__(self) -> str:
