@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 import json
-import spider
+import api.spider
 
 data = {
         'isSuccess': True,
@@ -20,7 +20,7 @@ def getBookshelf(request):
         books = {
             'name':i.name,
             'author':i.author,
-            'bookid':i.author,
+            'bookid':i.book_id,
             'bookUrl':i.book_url,
             'coverUrl':i.coverUrl,
             'durChapterTitle':i.durChaptertitle,
@@ -34,16 +34,43 @@ def getBookshelf(request):
     return HttpResponse(json.dumps(data),content_type='application/json')
 
 def getBookContent(request):
-    bookid = request.GET.get('book_id')
-    index = request.GET.get('index')
-    content = Content.objects.filter(book_id=bookid,index=index)
-    content = list(content)
+    bookid = int(request.GET.get('book_id'))
+    index = int(request.GET.get('index'))
+    content = Content.objects.filter(book_id=bookid,content_id=index)
     if len(content) == 0:
-        spider.get_content
+        s = Book.objects.get(book_id=bookid)
+        content = api.spider.get_content(s.source,bookid,index)
+    else:
+        content = content[0].article
     data = {
         'isSuccess': True,
         'errorMsg':'',
         'data':content,
     }
+    return HttpResponse(json.dumps(data),content_type='application/json')
+
+def getChapterList(request):
+    bookid = request.GET.get('book_id')
+    content = BookContent.objects.filter(book_id=bookid)
+    if len(content) == 0:
+        s = Book.objects.get(book_id=bookid)
+        content = api.spider.get_contents(s.source,bookid)
+    else:
+        content = content[0].data
+    content = content['data']
+    contents = []
+    i = 0
+    for url in content['book_urls']:
+        contents.append({
+            'url':url,
+            'title':content['book_title'][i]
+        })
+        i = i + 1
+    data = {
+        'isSuccess': True,
+        'errorMsg':'',
+        'data':contents,
+    }
+    return HttpResponse(json.dumps(data),content_type='application/json')
 
 # Create your views here.

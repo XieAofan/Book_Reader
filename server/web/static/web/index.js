@@ -1,5 +1,5 @@
 front_url = 'http://127.0.0.1:8000/api';
-front_url = 'http://read.xieaofan.top/reader3';
+//front_url = 'http://read.xieaofan.top/reader3';
 data = 'init';
 function creat_book_div(name,url,img,content,isnew,id,r){
     if(img==undefined){
