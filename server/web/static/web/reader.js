@@ -2,7 +2,7 @@ data = '';
 x = document.getElementById("f");
 content = [];
 nr = '';
-front_url = 'http://127.0.0.1:8000/api';
+front_url = '/api';
 function get_content(url,index){
     r = nr;
     if(r==''){
