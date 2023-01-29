@@ -37,11 +37,17 @@
     <div class='buttons' id='buttons1'>
       <button class="btn btn-primary" onclick="next_chapter();">
         <span class="spinner-grow spinner-grow-sm" id = 'nextl'></span>
-        Next
+        下一章
       </button><br>
       <button class="btn btn-primary" onclick="last_chapter();" >
         <span class="spinner-grow spinner-grow-sm" id="lastl"></span>
-        Last
+        上一章
+      </button><br>
+      <button class="btn btn-primary" onclick="i++;next_page(i);" >
+        下一页
+      </button><br>
+      <button class="btn btn-primary" onclick="i--;next_page(i);" >
+        上一页
       </button><br>
       <button class="btn btn-primary" onclick="location.href=('/')" >首页</button>
     </div>

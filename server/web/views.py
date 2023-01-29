@@ -12,7 +12,7 @@ def test(request):
 @login_required
 def reader(request):
     content = request.GET.get('myid',default='1')
-    url = request.GET.get('url',default='1')
+    url = request.GET.get('id',default='1')
     name = request.GET.get('n',default='1')
     context = {
         'content':content,

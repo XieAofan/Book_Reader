@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import *
-import json
+import json, time
 import api.spider
 
 data = {
@@ -70,6 +71,23 @@ def getChapterList(request):
         'isSuccess': True,
         'errorMsg':'',
         'data':contents,
+    }
+    return HttpResponse(json.dumps(data),content_type='application/json')
+
+@csrf_exempt
+def saveBookProgress(request):
+    bookid = request.POST.get('book_id')
+    index = request.POST.get('index')
+    title = request.POST.get('title')
+    b = Book.objects.get(book_id=bookid)
+    b.durChapterindex = index
+    b.durChapterTime = time.time()
+    b.durChaptertitle = title
+    b.save()
+    data = {
+        'isSuccess': True,
+        'errorMsg':'',
+        'data':title,
     }
     return HttpResponse(json.dumps(data),content_type='application/json')
 

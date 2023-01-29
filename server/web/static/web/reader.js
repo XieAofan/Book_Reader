@@ -2,10 +2,11 @@ data = '';
 x = document.getElementById("f");
 content = [];
 nr = '';
+front_url = 'http://127.0.0.1:8000/api';
 function get_content(url,index){
     r = nr;
     if(r==''){
-        $.get("https://read.xieaofan.top/reader3/getBookContent",{'url':url,'index':index},function(redata,status){
+        $.get(front_url+"/getBookContent",{'book_id':url,'index':index},function(redata,status){
         data = redata['data'];
         data = data.split('\n');
         $('#content').empty();
@@ -18,7 +19,7 @@ function get_content(url,index){
       });
     }
     
-    $.get("https://read.xieaofan.top/reader3/getBookContent",{'url':url,'index':index+1},function(redata,status){
+    $.get(front_url+"/getBookContent",{'book_id':url,'index':index+1},function(redata,status){
         data = redata['data'];
         nr = data;
       });
@@ -58,10 +59,11 @@ function last_chapter(){
 };
 
 function save_progress(){
-    $.post('https://read.xieaofan.top/reader3/saveBookProgress',
+    $.post(front_url+'/saveBookProgress',
         {
-            'name':bookname,
+            'book_id':url,
             'index':index,
+            'title':content[index]['title']
         },
         function(data, s){
             console.log(data)
@@ -108,7 +110,7 @@ $(document).keydown(function(event){
     }
 });
 window.onbeforeunload=save_progress;
-$.get("https://read.xieaofan.top/reader3/getChapterList",{'url':url},function(redata,status){
+$.get(front_url+"/getChapterList",{'book_id':url},function(redata,status){
         content = redata['data'];
         $('#title').empty();
         $('#title').append('<h3>'+content[index]['title']+'</h3>')

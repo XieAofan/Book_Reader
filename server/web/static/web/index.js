@@ -12,7 +12,7 @@ function creat_book_div(name,url,img,content,isnew,id,r){
         `;
     };
     url = `
-    /reader?url=${url}&n=${name}&myid=${content}
+    /reader?id=${r['bookid']}&n=${name}&myid=${content}
     `
     var node = `
     <div class="col-*-* book">
@@ -44,7 +44,7 @@ function bubbleSort(arr) {
   }
 
 function init(){
-    var url;
+    //var url;
     data = 'start'
     $.get(front_url+"/getBookshelf",function(re_data,status){
         data = re_data.data;

@@ -28,7 +28,7 @@ def get_content(my_Site,id,index):
             #print(c)
             s += c
     c = Content()
-    c.title = title
+    c.title = title[0]
     c.book_id = id
     c.article = s
     c.content_id = index
@@ -54,7 +54,7 @@ def get_contents(my_Site,id):
         'data':{
             'book_names':book_names,
             'book_urls':book_urls,
-            'book_title':book_title,
+            'book_title':book_title[0],
         }
     }
     b = BookContent()
