@@ -3,6 +3,7 @@ x = document.getElementById("f");
 content = [];
 nr = '';
 front_url = '/api';
+li = 0;
 function get_content(url,index){
     r = nr;
     if(r==''){
@@ -97,7 +98,16 @@ function next_page(mi){
         last_chapter();
         mi = i;
     }
+    //console.log(mi-li)
+    if(Math.abs(mi-li)>1){
+        article.style.transition = '0s';
+        //console.log(mi-li);
+    }
     article.style.transform = `translateX(-${(width+60) * mi}px)`
+    setTimeout(function(){
+        article.style.transition = '.4s';
+      }, 400)
+    li = mi
 }
 
 $("#lastl").hide();

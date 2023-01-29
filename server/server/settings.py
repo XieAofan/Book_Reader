@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-hki)mth!+)(%()wquoq@zfk0l_cwh+)k0-(kcem#sc&jh4id$g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'
 
 # Application definition
 
@@ -110,14 +110,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-cn'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
