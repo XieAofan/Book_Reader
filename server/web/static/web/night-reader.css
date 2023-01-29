@@ -1,0 +1,106 @@
+html {
+    height: 100%;
+    width: 100%;
+  }
+  body{
+    -webkit-animation: bgbody 3s ease;
+    -o-animation: bgbody 3s ease;
+    animation: bgbody 3s ease;
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
+  }
+  .th{
+    margin-top: 1%;
+    margin-left: 22%;
+    margin-bottom: 0px;
+    color: white;
+    font-size: small;
+  }
+  article{
+    columns: calc(100vw - 120px) 1;
+    column-gap: 60px;
+    height: 93vh;
+    transition: .4s;
+  }
+  .box{
+    color: white;
+    margin-left: 5%;
+    margin: 20%;
+    /* overflow-y:auto; */
+    /* overflow-x: auto; */
+    margin-top: 0.5%;
+    width: 60%;
+    height: 94vh;
+    padding: 40px;
+    padding-top: 1%;
+    margin-bottom: 1%;
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    }
+    .fy{
+      width: 100%;
+      text-align: center;
+    }
+
+    .fy a{
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .test-1::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width : 8px;  /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+    }
+    .test-1::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 8px;
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background   : #535353;
+    }
+    .test-1::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background   :  rgba(0,0,0,.5);
+    }
+    @keyframes bgbody {
+      0%{
+          opacity: 0;
+          background-color: #ffffff;
+      }
+      100%{
+          opacity: 1;
+      }
+  }
+  @keyframes move{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+  }
+
+  .content{
+    line-height: 1.8;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: custom-system;
+    overflow: hidden;
+  }
+
+.content {}
+  .content p{
+    text-indent: 2em;
+  }
+
+  .buttons{
+    position:fixed;
+    top: 7%;
+    right: 80%;
+  }
+  .buttons button{
+    width: 85px;
+    margin-top: 6px;
+  }

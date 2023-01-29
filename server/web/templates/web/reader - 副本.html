@@ -21,33 +21,23 @@
   </head>
   <body onbeforeunload="test()">
     <h3 class="th">{{ name }}</h3>
-    <div class="box test-1">
-        <div class="content" id="f">
-          <article id='a'>
-            <div id='title'>
-              <div class="spinner-border text-muted" style=""></div>
-            </div>
-            <hr>
-            <span id="content">
-              <div class="spinner-border text-muted" style="position:absolute;left:50%;top:45%;"></div>
-            </span>
-          </article>
+    <div class="box test-1" id="f">
+        <div id='title'>
+          <div class="spinner-border text-muted" style=""></div>
+        </div>
+        <hr>
+        <div id="content" class="content">
+          <div class="spinner-border text-muted" style="position:absolute;left:50%;top:45%;"></div>
         </div>
     </div>
     <div class='buttons' id='buttons1'>
-      <button class="btn btn-primary" onclick="next_chapter();">
+      <button class="btn btn-primary" onclick="next();">
         <span class="spinner-grow spinner-grow-sm" id = 'nextl'></span>
-        下一章
+        Next
       </button><br>
-      <button class="btn btn-primary" onclick="last_chapter();" >
+      <button class="btn btn-primary" onclick="last();" >
         <span class="spinner-grow spinner-grow-sm" id="lastl"></span>
-        上一章
-      </button><br>
-      <button class="btn btn-primary" onclick="i++;next_page(i);" >
-        下一页
-      </button><br>
-      <button class="btn btn-primary" onclick="i--;next_page(i);" >
-        上一页
+        Last
       </button><br>
       <button class="btn btn-primary" onclick="location.href=('/')" >首页</button>
     </div>

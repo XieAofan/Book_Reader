@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'web/login.css' %}">
+    <title>Login to secret space</title>
+    
+    <script>function IsPC() {    
+      var userAgentInfo = navigator.userAgent;    
+      var Agents = ["Android", "iPhone","ymbianOS","Windows Phone", "iPad", "iPod"];   
+      var flag = false;   
+      for (var v = 0; v < Agents.length; v++) {       
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {            
+          flag = true;            
+          break;       
+        }  
+      }   
+      return flag;
+    }
+    </script>
+</head>
+<body class="l">
+    <div class="login-box" id="l">
+      <script>
+        if(IsPC()){
+          l.style.width="99%";
+        }
+      </script>
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            {% csrf_token %}
+          <div class="user-box">
+            <input type="text" name="username" required="" value="{{username}}">
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="password" required="">
+            <label>Password</label>
+          </div>
+          <p>
+            {% if message %}
+              <p style="color:red">{{ message }}</p>
+              {% endif %}
+          </p>
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="submit" value="SUBMIT" class="i">
+          </a>
+        </form>
+      </div>
+</body>
+</html>
