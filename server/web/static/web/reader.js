@@ -2,7 +2,7 @@ data = '';
 x = document.getElementById("f");
 content = [];
 nr = '';
-front_url = 'http://127.0.0.1:8000/api';
+front_url = '/api';
 function get_content(url,index){
     r = nr;
     if(r==''){
@@ -44,6 +44,19 @@ function next_chapter(){
     $('#title').append('<h3>'+content[index]['title']+'</h3>');
     i=0;
     next_page(i);
+};
+
+function to_chapter(i){
+    $("#nextl").show();
+    index=i;
+    get_content(url,index);
+    $("#nextl").hide();
+    $('#title').empty();
+    $('#title').append('<h3>'+content[index]['title']+'</h3>');
+    i=0;
+    next_page(i);
+    $('#myModal').modal('hide');
+    save_progress()
 };
 
 function last_chapter(){
@@ -110,8 +123,43 @@ $(document).keydown(function(event){
     }
 });
 window.onbeforeunload=save_progress;
-$.get(front_url+"/getChapterList",{'book_id':url},function(redata,status){
-        content = redata['data'];
-        $('#title').empty();
-        $('#title').append('<h3>'+content[index]['title']+'</h3>')
-      });
+function fresh(isfresh=0){
+    var s = $('#cd').scrollTop()
+    //alert(s)
+    $('#cf').show()
+    $('#contents').empty()
+    $.get(front_url+"/getChapterList",{'book_id':url,'isfresh':isfresh},function(redata,status){
+            content = redata['data'];
+            $('#title').empty();
+            $('#title').append('<h3>'+content[index]['title']+'</h3>');
+            for(var i=0,len=content.length; i<len; i++){
+                var nr = `
+                <li class="list-group-item contentli" onclick='to_chapter(${i});'>${content[i]['title']}</li>
+                `;
+                if(i==index-2){
+                    var nr = `
+                    <li class="list-group-item contentli" id='cll' onclick='to_chapter(${i});'>${content[i]['title']}</li>
+                    `;
+                }
+                if(i==index){
+                    var nr = `
+                    <li class="list-group-item contentli onread" style="background-color: #e7e7e7;" id='clz' onclick='to_chapter(${i});'>${content[i]['title']} - 正在阅读</li>
+                    `;
+                }
+                $('#contents').append(nr)
+            }
+            $('#cf').hide()
+            if(s==null){
+                scroll()
+            }
+            else{
+                $('#cd').scrollTop(s)
+            }
+            
+        });
+    }
+function scroll(){
+    var element = document.querySelector("#cll")
+    element.scrollIntoView();
+};
+fresh(0);

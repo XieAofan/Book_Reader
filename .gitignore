@@ -22,3 +22,4 @@ server/web/__pycache__/models.cpython-311.pyc
 server/web/__pycache__/urls.cpython-311.pyc
 server/web/__pycache__/views.cpython-311.pyc
 server/web/migrations/__pycache__/__init__.cpython-311.pyc
+server/web/__pycache__/__init__.cpython-38.pyc

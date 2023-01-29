@@ -52,12 +52,34 @@ def getBookContent(request):
 
 def getChapterList(request):
     bookid = request.GET.get('book_id')
-    content = BookContent.objects.filter(book_id=bookid)
-    if len(content) == 0:
+    try:
+        isfresh = int(request.GET.get('isfresh'))
+    except:
+        isfresh=0
+    bookcontent = BookContent.objects.filter(book_id=bookid)
+    if len(bookcontent) == 0:
         s = Book.objects.get(book_id=bookid)
         content = api.spider.get_contents(s.source,bookid)
+        b = BookContent()
+        b.data = data
+        b.book_id = bookid
+        b.save()
+        s.latestChapterTime=time.time()
+        s.latestChaptertindex=len(data['data']['book_urls'])-1 
+        s.latestChaptertitle = data['data']['book_title'][-1]
+        s.save()
     else:
-        content = content[0].data
+        content = bookcontent[0].data
+    if isfresh==1:
+        s = Book.objects.get(book_id=bookid)
+        data = api.spider.get_contents(s.source,bookid)
+        bookcontent[0].data=data
+        bookcontent[0].save()
+        content = data
+        s.latestChapterTime=time.time()
+        s.latestChaptertindex=len(data['data']['book_urls'])-1 
+        s.latestChaptertitle = data['data']['book_title'][-1]
+        s.save()
     content = content['data']
     contents = []
     i = 0

@@ -41,6 +41,19 @@ html {
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
     }
+    .contentli{
+      cursor: pointer;
+    }
+    .onread{
+      color: #535353;
+    }
+    .contentli:hover{
+      background-color: #e7e7e7;
+      transition: .2s;
+    }
+    .contentbox{
+      overflow-y:auto;
+    }
     .fy{
       width: 100%;
       text-align: center;

@@ -54,11 +54,7 @@ def get_contents(my_Site,id):
         'data':{
             'book_names':book_names,
             'book_urls':book_urls,
-            'book_title':book_title[0],
+            'book_title':book_title,
         }
     }
-    b = BookContent()
-    b.data = data
-    b.book_id = id
-    b.save()
     return data
