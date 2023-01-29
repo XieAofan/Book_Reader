@@ -35,6 +35,7 @@
         </div>
     </div>
     <div class='buttons' id='buttons1'>
+      
       <button class="btn btn-primary" onclick="next_chapter();">
         <span class="spinner-grow spinner-grow-sm" id = 'nextl'></span>
         下一章
@@ -49,9 +50,39 @@
       <button class="btn btn-primary" onclick="i--;next_page(i);" >
         上一页
       </button><br>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        目录
+      </button><br>
       <button class="btn btn-primary" onclick="location.href=('/')" >首页</button>
     </div>
     <script src="{% static 'web/reader.js' %}"></script>
-
+        <!-- 模态框 -->
+    <div class="modal fade" id="myModal" style="color: black;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">目录-{{ name }}</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+    
+          <!-- 模态框内容 -->
+          <div class="modal-body contentsbox test-1" style="height:75vh;overflow-y:auto;" id="cd">
+            <div class="spinner-border text-muted" id="cf" style=""></div>
+            <ul id='contents' class="list-group list-group-flush">
+              
+            </ul>
+          </div>
+    
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick='document.querySelector("#cll").scrollIntoView()'>定位</button>
+            <button type="button" class="btn btn-primary" onclick='fresh(1)'>刷新</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
   </body>
 </html>
