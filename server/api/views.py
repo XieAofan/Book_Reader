@@ -47,6 +47,7 @@ def getBookContent(request):
         'isSuccess': True,
         'errorMsg':'',
         'data':content,
+        'i':index,
     }
     return HttpResponse(json.dumps(data),content_type='application/json')
 
