@@ -44,10 +44,10 @@
         <span class="spinner-grow spinner-grow-sm" id="lastl"></span>
         上一章
       </button><br>
-      <button class="btn btn-primary" onclick="i++;next_page(i);" >
+      <button class="btn btn-primary" onclick="pi++;next_page(pi);" >
         下一页
       </button><br>
-      <button class="btn btn-primary" onclick="i--;next_page(i);" >
+      <button class="btn btn-primary" onclick="pi--;next_page(pi);" >
         上一页
       </button><br>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
@@ -56,6 +56,7 @@
       <button class="btn btn-primary" onclick="location.href=('/')" >首页</button>
     </div>
     <script src="{% static 'web/reader.js' %}"></script>
+    <script src="{% static 'web/re.js' %}"></script>
         <!-- 模态框 -->
     <div class="modal fade" id="myModal" style="color: black;">
       <div class="modal-dialog modal-lg">
