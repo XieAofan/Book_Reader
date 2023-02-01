@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'web/night.css' %}">
     <script>
       no_cover_url = "{% static 'web/failed.jpg' %}";
+      key = "{{key}}";
     </script>
   </head>
   <body>
@@ -26,12 +27,12 @@
         </a>
 
         <div class="input-group" style="width:25%;position:absolute;right: 35%;height:30%;top:20%">
-          <span class="input-group-text" id="basic-addon1" onclick='search();'>
+          <span class="input-group-text" id="basic-addon1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
             </svg>
           </span>
-            <input id='searchinput' type="text" class="form-control" onkeydown="onKeyDown(event)" placeholder="Input group example" aria-label="Input group example" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" onkeydown="onKeyDown(event)" placeholder="{{key}}" aria-label="{{key}}" aria-describedby="basic-addon1">
         </div>
         
         <span style="position:absolute;right: 1%;">
@@ -67,7 +68,7 @@
       </div>
     <div class="container text-left">
       <h3 style="margin-top: 90px;color: white;">
-        最近在看
+        搜索结果
     </h3>
     <div class="row" id='booklast'>
       <div class="col-*-* book" id='loading-last'>
@@ -78,26 +79,12 @@
         </div>
       </div>
     </div>
-
-        <h3 style="margin-top: 90px;color: white;">
-            库
-        </h3>
-
-        <div class="row" id='booksheft'>
-            <div class="col-*-* book" id='loading'>
-                <div class = 'loading'>
-                    <div class="spinner-grow text-muted spinner-grow-sm"></div>
-                    <div class="spinner-grow text-muted spinner-grow-sm"></div>
-                    <div class="spinner-grow text-muted spinner-grow-sm"></div>
-                </div>
-            </div>
-        </div>
         <br><br><br><br>
         <div class="row" id='booksheft'>
           <hr>
           <p class='text-center'>END</p>
         </div>
     </div>
-    <script src="{% static 'web/index.js' %}"></script>
+    
   </body>
   </html>

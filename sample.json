@@ -1,0 +1,8 @@
+{
+    "book_img": "/html/body/div[1]/div[3]/div[1]/div/div[1]/img/@src",
+    "title": "/html/body/div[2]/div[3]/h1/text()",
+    "article": "//*[@id='txt']/text()",
+    "book_urls": "/html/body/div[1]/div[4]/ul/li/a/@href",
+    "book_names": "/html/body/div[1]/div[3]/div[1]/h1/text()",
+    "book_title": "/html/body/div[1]/div[4]/ul/li/a/text()"
+}

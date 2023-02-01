@@ -60,7 +60,8 @@ def getChapterList(request):
     bookcontent = BookContent.objects.filter(book_id=bookid)
     if len(bookcontent) == 0:
         s = Book.objects.get(book_id=bookid)
-        content = api.spider.get_contents(s.source,bookid)
+        data = api.spider.get_contents(s.source,bookid)
+        content = data
         b = BookContent()
         b.data = data
         b.book_id = bookid
@@ -85,6 +86,8 @@ def getChapterList(request):
     contents = []
     i = 0
     for url in content['book_urls']:
+        if not (url[0]=='h' and url[1]=='t'):
+            url = 'https://'+ url
         contents.append({
             'url':url,
             'title':content['book_title'][i]

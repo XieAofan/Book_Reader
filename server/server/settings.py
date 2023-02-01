@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Reader',
+        'NAME': 'reader',
         'USER':'Reader',      #数据库用户名
         'PASSWORD':'Reader',      #数据库密码
-        'HOST':'43.155.67.141',          #数据库主机，留空默认为"localhost"
+        'HOST':'149.127.238.65',          #数据库主机，留空默认为"localhost"
         'PORT':'3306',      #数据库使用的端口
     }
 }
