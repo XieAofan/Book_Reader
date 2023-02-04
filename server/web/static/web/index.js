@@ -82,8 +82,13 @@ function onKeyDown(event){
         //要做的事情
     }
     if(e && e.keyCode==13){ // enter 键
-        alert("此处回车触发搜索事件");
+        search()
     }
+}
+function search(){
+    var key;
+    key = document.getElementById('searchinput').value;
+    location.href='\search?key='+key;
 }
 
 

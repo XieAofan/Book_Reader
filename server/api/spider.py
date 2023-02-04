@@ -13,6 +13,8 @@ def get_content(my_Site,id,index):
     headers = {
         'User-Agent':random.choice(ua)
     }
+    if not (url[0]=='h' and url[1]=='t'):
+            url = 'https://'+ url
     response = requests.get(url,headers=headers)
     response.encoding="utf-8"
     html = response.text
@@ -33,7 +35,7 @@ def get_content(my_Site,id,index):
     c.article = s
     c.content_id = index
     c.save()
-    return s
+    return s,title[0]
 
 def get_contents(my_Site,id):
     url = Book.objects.get(book_id=id).book_url
@@ -50,6 +52,9 @@ def get_contents(my_Site,id):
     book_title = ele.xpath(strategy['book_title'])
     for i in range(len(book_urls)):
         book_urls[i] = my_Site.site_url + book_urls[i]
+        if not (url[0]=='h' and url[1]=='t'):
+            book_urls[i] = 'https://'+ book_urls[i]
+        
     data = {
         'data':{
             'book_names':book_names,

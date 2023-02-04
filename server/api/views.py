@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import *
 import json, time
 import api.spider
+import api.re
 
 data = {
         'isSuccess': True,
@@ -40,7 +41,7 @@ def getBookContent(request):
     content = Content.objects.filter(book_id=bookid,content_id=index)
     if len(content) == 0:
         s = Book.objects.get(book_id=bookid)
-        content = api.spider.get_content(s.source,bookid,index)
+        content ,t = api.spider.get_content(s.source,bookid,index)
     else:
         content = content[0].article
     data = {
@@ -60,7 +61,8 @@ def getChapterList(request):
     bookcontent = BookContent.objects.filter(book_id=bookid)
     if len(bookcontent) == 0:
         s = Book.objects.get(book_id=bookid)
-        content = api.spider.get_contents(s.source,bookid)
+        data = api.spider.get_contents(s.source,bookid)
+        content = data
         b = BookContent()
         b.data = data
         b.book_id = bookid
@@ -85,6 +87,8 @@ def getChapterList(request):
     contents = []
     i = 0
     for url in content['book_urls']:
+        if not (url[0]=='h' and url[1]=='t'):
+            url = 'https://'+ url
         contents.append({
             'url':url,
             'title':content['book_title'][i]
@@ -114,4 +118,29 @@ def saveBookProgress(request):
     }
     return HttpResponse(json.dumps(data),content_type='application/json')
 
+def getAll(request):
+    bookid = request.GET.get('bookid')
+    bookcontent = BookContent.objects.filter(book_id=bookid)
+    bookcontent = bookcontent[0]
+    data = bookcontent.data
+    contents = []
+    cts = []
+    for i in range(data['book_urls']):
+        bookid = bookid
+        index = i
+        content = Content.objects.filter(book_id=bookid,content_id=index)
+        if len(content) == 0:
+            s = Book.objects.get(book_id=bookid)
+            content ,title = api.spider.get_content(s.source,bookid,index)
+        else:
+            content = content[0].article
+            title = content[0].title
+        contents.append(content)
+        cts.append(title)
+    data = {
+        'isSuccess': True,
+        'errorMsg':'',
+        'data':'',
+    }
+    return HttpResponse(json.dumps(data),content_type='application/json')
 # Create your views here.

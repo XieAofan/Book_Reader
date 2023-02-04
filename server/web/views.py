@@ -41,3 +41,9 @@ def my_login(request):
 def my_logout(request):
     logout(request)
     return HttpResponseRedirect("/login")
+
+def search(request):
+    context ={
+        'key':request.GET.get('key',default='1')
+    }
+    return render(request, 'web/search.html', context)

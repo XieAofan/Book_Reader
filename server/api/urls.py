@@ -6,5 +6,5 @@ urlpatterns = [
     path('getChapterList', views.getChapterList, name='getChapterList'),
     path('getBookContent', views.getBookContent, name='getBookContent'),
     path('saveBookProgress', views.saveBookProgress, name='saveBookProgress'),
-
+    path('getAll',views.grtAll,name='getAll')
 ]
