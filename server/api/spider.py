@@ -35,7 +35,7 @@ def get_content(my_Site,id,index):
     c.article = s
     c.content_id = index
     c.save()
-    return s
+    return s,title[0]
 
 def get_contents(my_Site,id):
     url = Book.objects.get(book_id=id).book_url
